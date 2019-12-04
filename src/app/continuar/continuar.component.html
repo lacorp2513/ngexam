@@ -1,0 +1,110 @@
+<div class="mt-5">
+  <div class="container">
+    <h1 class="mb-5 text-center">
+      Datos para aprobar
+    </h1>
+    <div class="row">
+      <form  (ngSubmit)="saveStudent()">
+        <div class="row">
+          <div class="col-12">
+              <div class="alert alert-danger">
+                  Validar inputs
+                  <ul>
+                    <li>nombre: requerido, texto minimo de 4 caracteres, solo letras</li>
+                    <li>paterno: requerido, texto minimo de 4 caracteres, solo letras</li>
+                    <li>materno: requerido, texto minimo de 4 caracteres, solo letras</li>
+                    <li>email: requerido, email</li>
+                    <li>edad: requerido, numeros, solo hasta el 100</li>
+                  </ul>
+                </div>
+          </div>
+          <div class="col-12 col-md-4">
+
+            <div class="form-group">
+              <label for="matricula">Matricula</label>
+              <input type="text" name="matricula" id="matricula" class="form-control" placeholder="Matricula"
+                formControlName="matricula">
+            </div>
+            <div *ngIf="matricula.invalid && (matricula.dirty || matricula.touched)" class="alert alert-danger">
+              <div *ngIf="matricula.getError('required')">
+                Matricula es necesaria
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre"
+                formControlName="nombre">
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="apaterno">Apellido Paterno</label>
+              <input type="text" name="apaterno" id="apaterno" class="form-control" placeholder="Apellido Paterno"
+                formControlName="apaterno">
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="amaterno">Apellido Materno</label>
+              <input type="text" name="amaterno" id="amaterno" class="form-control" placeholder="Apellido Materno"
+                formControlName="amaterno">
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" name="email" id="email" class="form-control" placeholder="Email" formControlName="email">
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="edad">Edad</label>
+              <input type="text" name="edad" id="edad" class="form-control" placeholder="Edad" formControlName="edad">
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-success btn-block" type="submit">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="alert alert-danger">
+                Implementar Eliminar y Editar
+              </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Matricula</th>
+                  <th>Nombre</th>
+                  <th>A Paterno</th>
+                  <th>A Materno</th>
+                  <th>Email</th>
+                  <th>Edad</th>
+                  <th colspan="2"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of students">
+                  <td>{{student.matricula}}</td>
+                  <td>{{student.nombre}}</td>
+                  <td>{{student.apaterno}}</td>
+                  <td>{{student.amaterno}}</td>
+                  <td>{{student.email}}</td>
+                  <td>{{student.edad}}</td>
+                  <td>Eliminar</td>
+                  <td>Editar</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
